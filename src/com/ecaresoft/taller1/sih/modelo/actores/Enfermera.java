@@ -1,19 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ecaresoft.taller1.sih.modelo.actores;
 
 import com.ecaresoft.taller1.sih.modelo.entidades.Direccion;
 
 /**
- *
+ * Modelo de datos de una enfermera.
  * @author mrojas
  */
 public class Enfermera {
     
+    // arreglo de las posibles direcciones de la enfermera.
     private Direccion[] direcciones;
 
     public Direccion[] getDirecciones() {

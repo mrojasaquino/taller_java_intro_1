@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ecaresoft.taller1.sih.modelo.actores;
 
 import com.ecaresoft.taller1.sih.modelo.base.Persona;
 import com.ecaresoft.taller1.sih.modelo.entidades.Direccion;
 
 /**
- *
+ * Modelo de datos de un paciente.
  * @author mrojas
  */
 public class Paciente extends Persona {
@@ -32,6 +26,4 @@ public class Paciente extends Persona {
     public void setLugarNacimiento(Direccion lugarNacimiento) {
         this.lugarNacimiento = lugarNacimiento;
     }
-    
-    
 }

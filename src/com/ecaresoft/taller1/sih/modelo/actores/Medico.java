@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ecaresoft.taller1.sih.modelo.actores;
 
 import com.ecaresoft.taller1.sih.modelo.entidades.Direccion;
 import com.ecaresoft.taller1.sih.modelo.base.Persona;
 
 /**
- *
+ * Modelo de datos de un medico.
  * @author mrojas
  */
 public class Medico extends Persona {
     
+    // cedula profesional
     private String cedulaProf;
+    
+    // las posibles direcciones del medico
     private Direccion[] direcciones;
 
     public String getCedulaProf() {
