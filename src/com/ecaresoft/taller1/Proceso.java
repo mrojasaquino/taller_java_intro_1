@@ -9,11 +9,14 @@ package com.ecaresoft.taller1;
 import com.ecaresoft.taller1.sih.modelo.actores.Medico;
 import com.ecaresoft.taller1.sih.modelo.actores.Paciente;
 import com.ecaresoft.taller1.sih.modelo.entidades.Cirugia;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import org.apache.commons.beanutils.PropertyUtils;
 
 /**
@@ -27,9 +30,18 @@ public class Proceso {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+        Logger logger = Logger.getLogger(Proceso.class.getName());
+        SimpleFormatter simpleFormatter = new SimpleFormatter();
+        FileHandler fileHandler = null;
         
         // manejo de excepciones en Java, se utiliza el bloque try ... catch
         try {
+            
+            fileHandler = new FileHandler("HIS.log");
+            fileHandler.setFormatter(simpleFormatter);
+            logger.addHandler(fileHandler);
+            
             // creamos un medico
             Medico medico = new Medico();
             medico.setNombre1("Miguel");
@@ -40,7 +52,7 @@ public class Proceso {
             // lo almacenamos
             medico.guardar();
             // mostramos en la consola el identificador asignado al medico
-            System.out.println("Id " + medico.getId() + " - " + medico.getNombreCompleto());
+            logger.warning("Id " + medico.getId() + " - " + medico.getNombreCompleto());
             
             // creamos otro medico
             medico = new Medico();
@@ -52,7 +64,7 @@ public class Proceso {
             // lo almacenamos
             medico.guardar();
             // mostramos en la consola el identificador asignado al medico
-            System.out.println("Id " + medico.getId() + " - " + medico.getNombreCompleto());
+            logger.warning("Id " + medico.getId() + " - " + medico.getNombreCompleto());
             
             // creamos un paciente
             Paciente paciente = new Paciente();
@@ -64,14 +76,14 @@ public class Proceso {
             // lo almacenamos
             paciente.guardar();
             // mostramos en la consola el identificador asignado al paciente
-            System.out.println("Id " + paciente.getId() + " - " + paciente.getNombreCompleto());
+            logger.warning("Id " + paciente.getId() + " - " + paciente.getNombreCompleto());
             
             Medico cirujano = null;
             Paciente paciente2 = null;
             
             // programamos una cirugia
-            Cirugia cirugia = new Cirugia(cirujano, paciente2, null);
-            System.out.println(cirugia.toString());
+            Cirugia cirugia = new Cirugia(medico, paciente, null);
+            logger.warning(cirugia.toString());
             
             
             // obtenemos las propiedades del objeto y sus valores, utilizando la introspeccion
@@ -84,14 +96,19 @@ public class Proceso {
             
             // mostramos en la consola el nombre de las propiedades
             for(String llave : llaves) {
-                System.out.println("Propiedad = " + llave);
+                logger.warning("Propiedad : " + llave);
+//                System.out.println("Propiedad = " + llave);
             }
             
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Proceso.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         } catch (InvocationTargetException ex) {
-            Logger.getLogger(Proceso.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         } catch (NoSuchMethodException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Proceso.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SecurityException ex) {
             Logger.getLogger(Proceso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
