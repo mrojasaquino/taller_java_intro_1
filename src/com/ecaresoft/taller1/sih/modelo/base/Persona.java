@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ecaresoft.taller1.sih.modelo.base;
 
 import java.sql.Timestamp;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- *
+ * Modelo de datos para una persona. Extiende del modelo de datos generico.
  * @author mrojas
  */
 public class Persona extends Modelo {
@@ -88,11 +82,17 @@ public class Persona extends Modelo {
         this.fechNac = fechNac;
     }
     
+    /**
+     * Devolvemos el nombre completo de la persona a partir de los datos individuales.
+     * @return El nombre completo.
+     */
     public String getNombreCompleto() {
         StringBuilder nombreCompleto = new StringBuilder();
         
         nombreCompleto.append(getNombre1());
         
+        // utilizamos las clases de utileria de commons-lang para determinar si
+        // la cadena de texto esta vacia o es nula incluso
         if(StringUtils.isNotEmpty(getNombre2())) {
             nombreCompleto.append(' ').append(getNombre2());
         }

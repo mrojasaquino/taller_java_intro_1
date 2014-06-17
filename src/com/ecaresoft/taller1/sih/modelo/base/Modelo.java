@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ecaresoft.taller1.sih.modelo.base;
 
 import com.ecaresoft.taller1.sih.almacenamiento.BaseDatosMemoria;
 
 /**
- *
+ * Modelo basico de datos. Contiene las operaciones basicas que todo objeto que
+ * sea susceptible de ser almacenado debe poder ejecutar.
  * @author mrojas
  */
 public class Modelo {
 
+    // identificador numerico del objeto
     private int id;
     
     public int getId() {
@@ -24,16 +20,24 @@ public class Modelo {
         this.id = id;
     }
     
-    
+    /**
+     * Almacenamos el objeto actual en el mecanismo de persistencia subyacente.
+     * @return un valor booleano para indicar si se almaceno o no el objeto.
+     */
     public boolean guardar() {
         boolean retVal = false;
         
+        // invocamos el motor de base de datos
         retVal = BaseDatosMemoria.INSTANCIA.almacenar(this);
         
         return retVal;
     }
     
     
+    /**
+     * Borramos de la base de datos el objeto.
+     * @return un valor booleano indicando si se borro o no el objeto.
+     */
     public boolean borrar() {
         boolean retVal = false;
         
@@ -42,6 +46,11 @@ public class Modelo {
     }
     
     
+    /**
+     * Cargamos un objeto a partir del identificador numerico proporcionado.
+     * @param id el identificador del objeto a cargar.
+     * @return un modelo de datos.
+     */
     public Modelo cargar(int id) {
         Modelo retVal = null;
         

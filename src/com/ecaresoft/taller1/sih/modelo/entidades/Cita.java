@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ecaresoft.taller1.sih.modelo.entidades;
 
 import com.ecaresoft.taller1.sih.modelo.actores.Medico;
@@ -13,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 
 /**
- *
+ * Modelo de datos de una cita medica.
  * @author mrojas
  */
 public class Cita extends Modelo {
@@ -116,6 +110,22 @@ public class Cita extends Modelo {
 
     public void setCancelada(boolean cancelada) {
         this.cancelada = cancelada;
+    }
+
+    /**
+     * Sobre escritura del metodo toString de la clase Object. Devuelve una
+     * representacion textual del objeto.
+     * @return una cadena de texto con los datos relevantes de la cita.
+     */
+    @Override
+    public String toString() {
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append("Cita [ medico=").append(medico.getNombreCompleto())
+                .append("| paciente=").append(paciente.getNombreCompleto())
+                .append("| fechaCita=").append(fechaCita).append(" ]");
+        
+        return sb.toString();
     }
     
 }

@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ecaresoft.taller1.sih.modelo.entidades;
 
 import com.ecaresoft.taller1.sih.modelo.actores.Medico;
 import com.ecaresoft.taller1.sih.modelo.actores.Paciente;
+import com.ecaresoft.taller1.sih.modelo.base.Modelo;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
 /**
- *
+ * Modelo de una cirugia.
  * @author mrojas
  */
-public class Cirugia {
+public class Cirugia extends Modelo {
 
     private Medico cirujano;
     private Medico anestesiologo;
@@ -124,6 +120,11 @@ public class Cirugia {
         this.anestesiologo = anestesiologo;
     }
 
+    /**
+     * Sobre escritura del metodo toString de la clase Object. Devuelve una
+     * representacion textual del objeto.
+     * @return una cadena de texto con los datos relevantes de la cirugia.
+     */
     @Override
     public String toString() {
         StringBuilder mensaje = new StringBuilder();

@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ecaresoft.taller1.sih.modelo.entidades;
 
 import com.ecaresoft.taller1.sih.modelo.base.Modelo;
 
 /**
- *
+ * Modelo de datos de una direccion fisica.
  * @author mrojas
  */
 public class Direccion extends Modelo {
@@ -68,6 +62,20 @@ public class Direccion extends Modelo {
     public void setCodPost(int codPost) {
         this.codPost = codPost;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Direccion [ calle1=").append(calle1)
+                .append("| calle2=").append(calle2)
+                .append("| colonia=").append(colonia)
+                .append("| localidad=").append(localidad)
+                .append("| estado=").append(estado)
+                .append("| codPost=").append(codPost).append(" ]");
+        
+        return sb.toString();
+    }
+
     
     
 }
