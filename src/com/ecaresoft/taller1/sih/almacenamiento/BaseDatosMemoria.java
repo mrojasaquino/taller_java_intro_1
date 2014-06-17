@@ -39,8 +39,8 @@ public enum BaseDatosMemoria {
      * "tablas" y "secuencias".
      */
     BaseDatosMemoria() {
-        baseDatos = new HashMap<String, Map<Integer, Modelo>>();
-        secuencias = new HashMap<String, Integer>();
+        baseDatos = new HashMap<>();
+        secuencias = new HashMap<>();
     }
     
     /**
