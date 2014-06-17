@@ -17,6 +17,15 @@ public class Persona extends Modelo {
     private String apellido3;
     private String sexo;
     private Timestamp fechNac;
+    private boolean finado = false;
+
+    public boolean isFinado() {
+        return finado;
+    }
+
+    public void setFinado(boolean finado) {
+        this.finado = finado;
+    }
 
     public String getNombre1() {
         return nombre1;

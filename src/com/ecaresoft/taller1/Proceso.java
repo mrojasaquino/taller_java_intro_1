@@ -8,6 +8,7 @@ package com.ecaresoft.taller1;
 
 import com.ecaresoft.taller1.sih.modelo.actores.Medico;
 import com.ecaresoft.taller1.sih.modelo.actores.Paciente;
+import com.ecaresoft.taller1.sih.modelo.entidades.Cirugia;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Set;
@@ -58,11 +59,20 @@ public class Proceso {
             paciente.setNombre1("Luis");
             paciente.setApellido1("Lopez");
             paciente.setApellido2("Hernandez");
+//            paciente.setFinado(true);
             
             // lo almacenamos
             paciente.guardar();
             // mostramos en la consola el identificador asignado al paciente
             System.out.println("Id " + paciente.getId() + " - " + paciente.getNombreCompleto());
+            
+            Medico cirujano = null;
+            Paciente paciente2 = null;
+            
+            // programamos una cirugia
+            Cirugia cirugia = new Cirugia(cirujano, paciente2, null);
+            System.out.println(cirugia.toString());
+            
             
             // obtenemos las propiedades del objeto y sus valores, utilizando la introspeccion
             // utilizando la biblioteca commons bean-utils

@@ -3,8 +3,11 @@ package com.ecaresoft.taller1.sih.modelo.entidades;
 import com.ecaresoft.taller1.sih.modelo.actores.Medico;
 import com.ecaresoft.taller1.sih.modelo.actores.Paciente;
 import com.ecaresoft.taller1.sih.modelo.base.Modelo;
+import com.google.common.base.Objects;
+import com.google.common.base.Preconditions;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Modelo de una cirugia.
@@ -22,9 +25,19 @@ public class Cirugia extends Modelo {
     private boolean cerrada = false;
     private boolean cancelada = false;
 
+    
+    public Cirugia() {
+        throw new IllegalArgumentException("Debe proporcionar datos de paciente y cirujano");
+    }
+    
     public Cirugia(Medico cirujano, Paciente paciente, Timestamp fechaCirugia) {
         super();
 
+        // usamos Google Guava Preconditions para mejorar la legibilidad
+        Preconditions.checkNotNull(cirujano, "Debe proporcionar un cirujano.");
+        Preconditions.checkNotNull(paciente, "Debe proporcionar un paciente.");
+        Preconditions.checkState(!paciente.isFinado(), "No puede asignar una cirugia a un paciente finado.");
+        
         this.cirujano = cirujano;
         this.paciente = paciente;
         this.fechaCirugia = fechaCirugia;
@@ -129,12 +142,16 @@ public class Cirugia extends Modelo {
     public String toString() {
         StringBuilder mensaje = new StringBuilder();
         
-        mensaje.append("[ Cirujano : ").append(cirujano.getNombreCompleto())
-                .append(" | Anestesiologo : ").append(anestesiologo.getNombreCompleto())
-                .append(" | Paciente : ").append(paciente.getNombreCompleto())
-                .append(" | Fecha : ").append(fechaCirugia).append(" ]");
+        mensaje.append("Cirugia : [ Cirujano : ")
+                .append(cirujano == null ? StringUtils.EMPTY : cirujano.getNombreCompleto())
+                .append(" | Anestesiologo : ")
+                .append(anestesiologo == null ? StringUtils.EMPTY : anestesiologo.getNombreCompleto())
+                .append(" | Paciente : ")
+                .append(paciente == null ? StringUtils.EMPTY : paciente.getNombreCompleto())
+                .append(" | Fecha : ")
+                .append(Objects.firstNonNull(fechaCirugia, "Sin fecha aun")).append(" ]");
         
-        return super.toString(); 
+        return mensaje.toString();
     }
 
     
