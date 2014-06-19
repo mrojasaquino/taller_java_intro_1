@@ -82,7 +82,7 @@ public class Proceso {
             Paciente paciente2 = null;
             
             // programamos una cirugia
-            Cirugia cirugia = new Cirugia(cirujano, paciente2, null);
+            Cirugia cirugia = new Cirugia(medico, paciente, null);
             logger.warning(cirugia.toString());
             
             

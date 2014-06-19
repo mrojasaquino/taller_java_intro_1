@@ -1,6 +1,7 @@
 package com.ecaresoft.taller1.sih.modelo.base;
 
 import com.ecaresoft.taller1.sih.almacenamiento.BaseDatosMemoria;
+import com.ecaresoft.taller1.sih.almacenamiento.BaseDatosPg;
 
 /**
  * Modelo basico de datos. Contiene las operaciones basicas que todo objeto que
@@ -28,7 +29,8 @@ public class Modelo {
         boolean retVal = false;
         
         // invocamos el motor de base de datos
-        retVal = BaseDatosMemoria.INSTANCIA.almacenar(this);
+//        retVal = BaseDatosMemoria.INSTANCIA.almacenar(this);
+        retVal = BaseDatosPg.INSTANCIA.almacenar(this);
         
         return retVal;
     }
